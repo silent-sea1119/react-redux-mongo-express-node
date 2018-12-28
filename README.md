@@ -1,2 +1,2 @@
 # mern-social-network
-Created following the 
+Created following along Brad Traversy Udemy Course.
