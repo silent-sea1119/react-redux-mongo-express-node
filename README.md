@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Smart Rent Manager - SRM
 
 # English
@@ -88,3 +89,8 @@ http://localhost:5000/api/users/register
 http://localhost:5000/api/users/login
 ```
 Outras rotas podem ser encontradas no diretório backend/node-mongo/routes/api/ 
+=======
+### About
+
+A social network app done with the MERN stack.
+>>>>>>> 60b96afd1607492f1a08a6e6504961d0d31d015f
