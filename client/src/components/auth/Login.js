@@ -8,9 +8,9 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      errors: "",
+      password: "",
       email: "",
-      password: ""
+      errors: {}
     };
   }
 
@@ -19,13 +19,13 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticatd) {
+    if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticatd) {
+    if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
 

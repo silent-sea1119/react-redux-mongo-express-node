@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -8,6 +8,8 @@ import { clearCurrentProfile } from "./actions/profileActions";
 
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
+
+import PrivateRoute from './components/common/PrivateRoute';
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -49,7 +51,9 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </div>
             <Footer />
           </div>
