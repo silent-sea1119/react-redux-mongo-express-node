@@ -1,10 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Create Schema
 const PostSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: 'users'
   },
   text: {
     type: String,
@@ -16,14 +17,11 @@ const PostSchema = new Schema({
   avatar: {
     type: String
   },
-  // this property will have an array of objects, each of them having a
-  // referecing user as an object, because each user will be able to give
-  // or take back a like to a post.
   likes: [
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: 'users'
       }
     }
   ],
@@ -31,7 +29,7 @@ const PostSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: 'users'
       },
       text: {
         type: String,
@@ -55,4 +53,4 @@ const PostSchema = new Schema({
   }
 });
 
-module.exports = Post = mongoose.model("Post", PostSchema);
+module.exports = Post = mongoose.model('post', PostSchema);

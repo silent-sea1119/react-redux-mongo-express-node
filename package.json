@@ -1,9 +1,8 @@
 {
-  "name": "srm-mern",
+  "name": "devconnector",
   "version": "1.0.0",
-  "description": "an app to manage property",
+  "description": "Social network for developers",
   "main": "server.js",
-  "private": true,
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
@@ -11,32 +10,21 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DaviGadelhaLeitao/srm-mern.git"
-  },
-  "keywords": [
-    "MERN"
-  ],
-  "author": "Davi Gadelha Leitão",
+  "author": "Brad Traversy",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DaviGadelhaLeitao/srm-mern/issues"
-  },
-  "homepage": "https://github.com/DaviGadelhaLeitao/srm-mern#readme",
-  "devDependencies": {
-    "nodemon": "^1.18.4"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.1.0",
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
     "express": "^4.16.3",
     "gravatar": "^1.6.0",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.14",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.12",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "validator": "^10.7.1"
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
