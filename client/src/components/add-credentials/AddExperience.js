@@ -4,7 +4,7 @@ import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addExperience } from '../../actions/profileActions';
+import { addExperience } from "../../actions/profileActions";
 
 class AddExperience extends Component {
   constructor(props) {
@@ -26,19 +26,42 @@ class AddExperience extends Component {
     this.onCheck = this.onCheck.bind(this);
   }
 
+  // update errors if they exists when component receive props
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmit(e) {
     e.preventDefault();
+
+    // picking the experience data from the form to be saved, where is this data?
+    // into the state
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current,
+      description: this.state.description
+    };
+
+    // passing this.props.history so we can access that into profileActions and we are able to do that because
+    // we brought in withRouter from react-router-dom and wrapped addExperience component with withRouter
+    this.props.addExperience(expData, this.props.history);
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   onCheck(e) {
     this.setState({
       disabled: !this.state.disabled,
       current: !this.state.current
-    })
+    });
   }
 
   render() {
@@ -92,7 +115,7 @@ class AddExperience extends Component {
                   value={this.state.to}
                   onChange={this.onChange}
                   error={errors.to}
-                  disabled={this.state.disabled ? 'disabled' : ''}
+                  disabled={this.state.disabled ? "disabled" : ""}
                 />
                 <div className="form-check mb-4">
                   <input
@@ -116,8 +139,11 @@ class AddExperience extends Component {
                   error={errors.description}
                   info="Tell us about the position"
                 />
-                <input type="submit" value="Submit" className="btn btn-info btn-block mt-4">
-                </input>
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>
@@ -138,4 +164,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { addExperience })(withRouter(AddExperience));
+export default connect(
+  mapStateToProps,
+  { addExperience }
+)(withRouter(AddExperience));
