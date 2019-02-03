@@ -71,7 +71,7 @@ class AddEducation extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-ligth">
+              <Link to="/dashboard" className="btn btn-light">
                 Go back
               </Link>
               <h1 className="display-4 text-center">Add education</h1>
@@ -128,7 +128,7 @@ class AddEducation extends Component {
                     id="current"
                   />
                   <label htmlFor="current" className="form-check-label">
-                    Current Job
+                    Current Education
                   </label>
                 </div>
                 <TextAreaFieldGroup
