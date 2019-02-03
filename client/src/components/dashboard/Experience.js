@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { deleteExperience } from "../../actions/profileActions";
 
-// bringing withRouter because we'll have an action from inside this component that after
-// deleting an experience we'll redirect somewhere
-import { withRouter } from "react-router-dom";
-
 class Experience extends Component {
+
+  onDeleteClick(id) {
+    this.props.deleteExperience(id);
+  }
+
   render() {
+
     const experience = this.props.experience.map(exp => (
       <tr key={exp._id}>
         <td>{exp.company}</td>
@@ -19,8 +21,8 @@ class Experience extends Component {
           {exp.to === null ? (
             "Current"
           ) : (
-            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-          )}
+              <Moment format="YYYY/MM/DD">{exp.to}</Moment>
+            )}
         </td>
         <td>
           <button
@@ -32,6 +34,7 @@ class Experience extends Component {
         </td>
       </tr>
     ));
+
     return (
       <div>
         <h4 className="mb-4">Experience Credentials</h4>
@@ -48,7 +51,9 @@ class Experience extends Component {
         </table>
       </div>
     );
+
   }
+
 }
 
 Experience.propTypes = {
@@ -58,4 +63,4 @@ Experience.propTypes = {
 export default connect(
   null,
   { deleteExperience }
-)(withRouter(Experience));
+)(Experience);
