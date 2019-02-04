@@ -62,7 +62,6 @@ router.get('/all', (req, res) => {
 // @route   GET api/profile/handle/:handle
 // @desc    Get profile by handle
 // @access  Public
-
 router.get('/handle/:handle', (req, res) => {
   const errors = {};
 
@@ -82,7 +81,6 @@ router.get('/handle/:handle', (req, res) => {
 // @route   GET api/profile/user/:user_id
 // @desc    Get profile by user ID
 // @access  Public
-
 router.get('/user/:user_id', (req, res) => {
   const errors = {};
 
