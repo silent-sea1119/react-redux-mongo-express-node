@@ -39,7 +39,7 @@ class Profile extends Component {
           {/* passing a property to a component in React is so easy! */}
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
-          <ProfileCreds />
+          <ProfileCreds education={profile.education} experience={profile.experience} />
           <ProfileGithub />
         </div>
       );
