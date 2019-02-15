@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PostForm from "./PostForm";
 import Spinner from "../common/Spinner";
 
-class Post extends Component {
+class Posts extends Component {
   render() {
     return (
       <div className="feed">
@@ -20,4 +20,4 @@ class Post extends Component {
   }
 }
 
-export default postMessage;
+export default Posts;
