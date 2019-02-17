@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING } from "./types";
+import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING, DELETE_POST } from "./types";
 
 export const addPost = postData => dispatch => {
   axios
@@ -43,4 +43,24 @@ export const setPostLoading = () => {
   return {
     type: POST_LOADING
   };
+};
+
+export const deletePost = id => dispatch => {
+  axios
+    // backticks here it's to use a variable without concatenating
+    .delete(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_POST,
+        // just returning the id of the deleted post to then delete it
+        // locally on the page
+        payload: id
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
