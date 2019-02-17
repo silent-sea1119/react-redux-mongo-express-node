@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING, DELETE_POST } from "./types";
+import { ADD_POST, GET_ERRORS, GET_POST, GET_POSTS, POST_LOADING, DELETE_POST } from "./types";
 
 export const addPost = postData => dispatch => {
   axios
@@ -14,6 +14,27 @@ export const addPost = postData => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
+      })
+    );
+};
+
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      // as we aren't filling any form I don't want to return the ERRORS
+      // so I'll call GET_POSTS again, but this time passing null as the payload
+      dispatch({
+        type: GET_POSTS,
+        payload: null
       })
     );
 };

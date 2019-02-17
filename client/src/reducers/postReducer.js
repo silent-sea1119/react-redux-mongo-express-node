@@ -1,4 +1,4 @@
-import { ADD_POST, GET_POSTS, POST_LOADING, DELETE_POST } from "../actions/types";
+import { ADD_POST, GET_POST, GET_POSTS, POST_LOADING, DELETE_POST } from "../actions/types";
 
 const initialState = {
   posts: [],
@@ -12,6 +12,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload,
+        loading: false
       };
     case GET_POSTS:
       return {
@@ -30,6 +36,7 @@ export default function(state = initialState, action) {
         // deleting the post right from the state, as this will update the UI very fast
         posts: state.posts.filter(post => post._id != action.payload)
       };
+
     default:
       return state;
   }
