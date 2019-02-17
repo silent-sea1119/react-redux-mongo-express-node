@@ -18,6 +18,15 @@ class PostItem extends Component {
     this.props.removeLike(id);
   }
 
+  findUserLike(likes) {
+    const { auth } = this.props;
+    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     // post is being received from a parent component
     // and auth from redux
@@ -36,7 +45,11 @@ class PostItem extends Component {
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
             <button type="button" onClick={this.onLikeClick.bind(this, post._id)} className="btn btn-light mr-1">
-              <i className="text-info fas fa-thumbs-up" />
+              <i
+                className={classnames("fas fa-thumbs-up", {
+                  "text-info": this.findUserLike(post.likes)
+                })}
+              />
               <span className="badge badge-light">{post.likes.length}</span>
             </button>
             <button type="button" onClick={this.onUnlikeClick.bind(this, post._id)} className="btn btn-light mr-1">
