@@ -18,6 +18,23 @@ export const addPost = postData => dispatch => {
     );
 };
 
+export const addComment = (postId, commentData) => dispatch => {
+  axios
+    .post(`/api/comment/${postId}`, commentData)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 export const getPost = id => dispatch => {
   dispatch(setPostLoading());
 
